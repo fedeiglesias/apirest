@@ -1,0 +1,86 @@
+{
+  "name": "api-rest",
+  "version": "1.0.0",
+  "description": "Basic API REST with authentication",
+  "repository": "https://github.com/vmasto/express-babel",
+  "author": "Federico Iglesias <fedeiglesiasc@gmail.com>",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "engines": {
+    "node": "~6.9.1",
+    "npm": ">=3.10.0"
+  },
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.js --exec \"node -r dotenv/config -r babel-register\"",
+    "build": "npm run clean && mkdir dist && babel src -s -D -d dist",
+    "test": "jest --watch",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "helmet": "^3.12.1",
+    "morgan": "^1.9.0",
+    "node-fetch": "^2.1.2",
+    "rimraf": "^2.6.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "babel-jest": "^23.4.0",
+    "babel-register": "^6.26.0",
+    "dotenv": "^6.0.0",
+    "eslint": "^5.1.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jest": "^21.17.0",
+    "eslint-watch": "^4.0.1",
+    "jest": "^23.4.0",
+    "nodemon": "^1.18.1",
+    "supertest": "^3.1.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-object-rest-spread",
+      "transform-class-properties"
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "import",
+      "jest"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2017,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true,
+      "jest": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "rules": {
+      "jest/no-focused-tests": 2,
+      "jest/no-identical-title": 2
+    }
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
